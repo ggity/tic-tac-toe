@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --cell-size: 100px;
+    --mark-sze: calc(var(--cell-size) * .9);
+    --background-color: white;
+    --mark-color: black;
+    --mark-hover-color: lightgray;
+}
+
+body {
+    background-color: var(--background-color);
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.game-container {
+    /* max-height: 100vh; */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.game-header,
+.game-footer {
+    width: 100%;
+    padding: 1rem 2rem;
+}
+
+.game-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-header>h1 {
+    flex-grow: 1;
+    margin: 0;
+    text-align: center;
+}
+
+.game-board {
+    width: 100vw;
+    flex-grow: 1;
+    flex-shrink: 1;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    align-items: center;
+    align-content: center;
+    place-content: center;
+    place-items: center;
+}
+
+.cell {
+    position: relative;
+    width: var(--cell-size);
+    height: var(--cell-size);
+    border: 1px solid var(--mark-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3) {
+    border-top: none;
+}
+
+.cell:nth-child(3n +1) {
+    border-left: none;
+}
+
+.cell:nth-child(3n +3) {
+    border-right: none;
+}
+
+.cell:last-child,
+.cell:nth-child(7),
+.cell:nth-child(8) {
+    border-bottom: none;
+}
+
+.cell.x::before,
+.cell.x::after,
+.cell.circle::before {
+    background-color: var(--mark-color);
+}
+
+.game-board.x .cell:not(.x):not(.circle):hover::before,
+.game-board.x .cell:not(.x):not(.circle):hover::after,
+.game-board.circle .cell:not(.x):not(.circle):hover::before {
+    background-color: var(--mark-hover-color);
+}
+
+
+.cell.x,
+.cell.circle {
+    cursor: not-allowed;
+    /* pointer-events: none; */
+}
+
+.cell.x::before,
+.cell.x::after,
+.game-board.x .cell:not(.ax):not(.circle):hover::before,
+.game-board.x .cell:not(.ax):not(.circle):hover::after {
+    content: '';
+    position: absolute;
+    height: var(--mark-sze);
+    width: calc(var(--mark-sze) * .15);
+}
+
+.cell.x::before,
+.game-board.x .cell:not(.x):not(.circle):hover::before {
+    transform: rotate(45deg);
+}
+
+.cell.x::after,
+.game-board.x .cell:not(.x):not(.circle):hover::after {
+    transform: rotate(-45deg);
+}
+
+.cell.circle::before,
+.cell.circle::after,
+.game-board.circle .cell:not(.x):not(.circle):hover::before,
+.game-board.circle .cell:not(.x):not(.circle):hover::after {
+    position: absolute;
+    content: '';
+    border-radius: 50%;
+}
+
+.cell.circle::before,
+.game-board.circle .cell:not(.x):not(.circle):hover::before {
+    width: var(--mark-sze);
+    height: var(--mark-sze);
+    /* background-color: rebeccapurple; */
+}
+
+.cell.circle::after,
+.game-board.circle .cell:not(.x):not(.circle):hover::after {
+    width: calc(var(--mark-sze) * .7);
+    height: calc(var(--mark-sze) * .7);
+    background-color: var(--background-color);
+}
+
+.game-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-footer {
+    font-size: 1.5em;
+}
+
+.game-footer_link {
+    /* text-decoration */
+    text-underline-offset: .25em;
+    color: inherit;
+}
+
+.game-footer_link:hover {
+    color: darkorange;
+}
+
+.winning-message-overlay-container {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, .9);
+    /* promijenicemo ovu boju posle mozda */
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-size: 5rem;
+    color: var(--background-color);
+}
+
+.winning-message-overlay-container.showing {
+    display: flex;
+}
+
+.restart-btn {
+    font-size: 3rem;
+    font-weight: bold;
+    padding: 1rem 2rem;
+    border: 1px solid var(--mark-color);
+    background-color: var(--background-color);
+    cursor: pointer;
+}
+
+.restart-btn:hover {
+    background-color: var(--mark-color);
+    color: var(--background-color);
+    border-color: var(--background-color);
+}

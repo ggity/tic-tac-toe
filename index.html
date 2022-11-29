@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/script.js" defer></script>
+    <title>Template</title>
+</head>
+
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1>Tic Tac Toe</h1>
+        </div>
+        <div class="game-board circle" id="board">
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+        </div>
+        <div class="game-footer">
+            <span>
+                Created by
+                <a class="game-footer_link" href="https://github.com/ggity">ggity</a>
+            </span>
+        </div>
+        <div class="winning-message-overlay-container" id="winning-message-container">
+            <div data-winning-text></div>
+            <button class="restart-btn">Restart</button>
+        </div>
+    </div>
+</body>
+
+</html>
