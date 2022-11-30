@@ -39,12 +39,36 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+}
+
+.theme-switcher-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.theme-switcher-btn__icon-light {}
+
+
+
+.theme-switcher-btn__icon-dark {
+    display: none;
 }
 
 .game-header>h1 {
-    flex-grow: 1;
+    /* flex-grow: 1; */
     margin: 0;
-    text-align: center;
+    /* text-align: center; */
 }
 
 .game-board {
