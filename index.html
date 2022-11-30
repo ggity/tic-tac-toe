@@ -7,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/script.js" defer></script>
-    <title>Template</title>
+    <title>Tic tac toe</title>
 </head>
 
 <body>
     <div class="game-container">
         <div class="game-header">
             <h1>Tic Tac Toe</h1>
-            <button class="theme-switcher-btn">
+            <button class="theme-switcher-btn" data-theme-switcher>
                 <svg class="theme-switcher-btn__icon-light" focusable="false" width="22" height="22"
                     viewBox="0 0 100 100">
                     <g transform="translate(0,-952.36218)">
@@ -33,7 +33,7 @@
                 </svg>
             </button>
         </div>
-        <div class="game-board circle" id="board">
+        <div class="game-board" id="board">
             <div class="cell" data-cell></div>
             <div class="cell" data-cell></div>
             <div class="cell" data-cell></div>
@@ -52,7 +52,7 @@
         </div>
         <div class="winning-message-overlay-container" id="winning-message-container">
             <div data-winning-text></div>
-            <button class="restart-btn">Restart</button>
+            <button class="restart-btn" id="restart-btn">Restart</button>
         </div>
     </div>
 </body>

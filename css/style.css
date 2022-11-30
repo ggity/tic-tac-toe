@@ -7,21 +7,32 @@
 }
 
 :root {
-    --cell-size: 100px;
+    --cell-size: 200px;
     --mark-sze: calc(var(--cell-size) * .9);
     --background-color: white;
     --mark-color: black;
     --mark-hover-color: lightgray;
+    --text-color: white;
+    --link-hover-color: orange;
+}
+
+.dark-theme {
+    --background-color: #2D033B;
+    --mark-color: #E5B8F4;
+    --mark-hover-color: #810CA8;
+    --mark-hover-color: #C060A1;
+    --text-color: #C060A1;
+    --link-hover-color: #C060A1;
 }
 
 body {
     background-color: var(--background-color);
     margin: 0;
     font-family: 'Roboto', sans-serif;
+    color: var(--mark-color);
 }
 
 .game-container {
-    /* max-height: 100vh; */
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -43,32 +54,42 @@ body {
 }
 
 .theme-switcher-btn {
+    border: 1px solid var(--mark-color);
+    border-radius: 50%;
+    --switcher-btn-size: 40px;
+    width: var(--switcher-btn-size);
+    height: var(--switcher-btn-size);
     display: flex;
     justify-content: center;
     align-items: center;
-    border: none;
-    background-color: transparent;
+    background-color: var(--background-color);
     position: absolute;
     top: 1rem;
     right: 2rem;
-    border: 1px solid black;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    cursor: pointer;
 }
 
-.theme-switcher-btn__icon-light {}
+.theme-switcher-btn:hover {
+    background-color: var(--mark-color);
+}
 
+.theme-switcher-btn:hover path {
+    fill: var(--background-color);
+}
 
+.theme-switcher-btn__icon-light path,
+.theme-switcher-btn__icon-dark path {
+    fill: var(--mark-color);
+}
 
-.theme-switcher-btn__icon-dark {
+.theme-switcher-btn__icon-light {
     display: none;
 }
 
+.theme-switcher-btn__icon-dark {}
+
 .game-header>h1 {
-    /* flex-grow: 1; */
     margin: 0;
-    /* text-align: center; */
 }
 
 .game-board {
@@ -193,7 +214,7 @@ body {
 }
 
 .game-footer_link:hover {
-    color: darkorange;
+    color: var(--link-hover-color);
 }
 
 .winning-message-overlay-container {
@@ -207,7 +228,7 @@ body {
     align-items: center;
     gap: 1rem;
     font-size: 5rem;
-    color: var(--background-color);
+    color: var(--text-color);
 }
 
 .winning-message-overlay-container.showing {
@@ -220,6 +241,7 @@ body {
     padding: 1rem 2rem;
     border: 1px solid var(--mark-color);
     background-color: var(--background-color);
+    color: var(--mark-color);
     cursor: pointer;
 }
 
