@@ -16,11 +16,11 @@
     --background-color: white;
     --mark-color: black;
     --mark-hover-color: lightgray;
-    --text-color: white;
+    --text-color: black;
     --link-hover-color: orange;
 }
 
-.dark-theme {
+:root.dark-theme {
     --background-color: #2D033B;
     --mark-color: #E5B8F4;
     --mark-hover-color: #810CA8;
@@ -34,6 +34,10 @@ body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
     color: var(--mark-color);
+}
+
+.landscape-orientation-message-container {
+    display: none;
 }
 
 .game-container {
@@ -264,5 +268,22 @@ body {
 @media screen and (min-width: 680px) {
     :root {
         --cell-size: 200px;
+    }
+}
+
+@media (orientation: landscape) and (max-width: 800px) {
+    .landscape-orientation-message-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        inset: 0;
+        background-color: var(--background-color);
+        z-index: 2;
+    }
+
+    .landscape-orientation-message {
+        font-size: 2rem;
+        color: var(--mark-color);
     }
 }

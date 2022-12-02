@@ -1,26 +1,50 @@
-// selektujemo taster
+// theme swithcer logic
 const themeSwitcher = document.querySelector("[data-theme-switcher]");
-// 
-// let darkMode = localStorage.getItem("darkMode");
-// console.log(darkMode);
 
-// ukoliko ipak zelimo da vidimo da li je korisnik ranije ulazio na nas sajt, i da li je vec birao sebi temu, te ako nije to radio da vidimo koja mu je podrazumjevana tema na pretrazivacu kod ce biti malo komplikovaniji
-
-// u sustini pritisak na taster samo dodaje ili uklanja klasu
-themeSwitcher.addEventListener("click", () => {
-    document.body.classList.toggle("dark-theme");
+window.addEventListener("storage", (e) => {
+    let theme = e.newValue;
+    setPrefferedTheme(theme);
 });
 
-// neka ovo za teme sada ostane ovako, posle cemo mijenjati, sada pravimo logiku za igru
+themeSwitcher.addEventListener("click", () => {
+    toggleTheme();
+});
 
-// elementi sa html
+if (localStorage.getItem("prefferedTheme")) {
+    let theme = getPreferedTheme();
+    setPrefferedTheme(theme);
+} else {
+    let theme = window.matchMedia(`(prefers-color-scheme: dark)`).matches ? "light-theme" : "dark-theme";
+    setPrefferedTheme(theme);
+    updateStorage(theme);
+}
+
+function setPrefferedTheme(prefTheme) {
+    document.documentElement.className = "";
+    document.documentElement.className = prefTheme;
+}
+
+function toggleTheme() {
+    let theme = document.documentElement.className === "light-theme" ? "dark-theme" : "light-theme";
+    setPrefferedTheme(theme);
+    updateStorage(theme);
+}
+
+function updateStorage(theme) {
+    localStorage.setItem("prefferedTheme", theme);
+}
+
+function getPreferedTheme() {
+    return localStorage.getItem("prefferedTheme") === "light-theme" ? "light-theme" : "dark-theme";
+}
+
+// game logic 
 const cellElements = document.querySelectorAll("[data-cell]");
 const board = document.getElementById("board");
 const winningMessageOverlayContainer = document.getElementById("winning-message-container");
 const winningMessageTextElement = document.querySelector("[data-winning-text]");
 const restartBtn = document.getElementById("restart-btn");
 
-// promjenjive
 const X_CLASS = "x";
 const CIRCLE_CLASS = "circle";
 let circleTurn;
