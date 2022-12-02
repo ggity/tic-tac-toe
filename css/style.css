@@ -264,11 +264,19 @@ body {
     :root {
         --cell-size: 150px;
     }
+
+    .game-footer {
+        font-size: .9rem;
+    }
 }
 
 @media screen and (min-width: 680px) {
     :root {
         --cell-size: 200px;
+    }
+
+    .game-footer {
+        font-size: 1rem;
     }
 }
 
