@@ -1,5 +1,7 @@
 // theme swithcer logic
 const themeSwitcher = document.querySelector("[data-theme-switcher]");
+const themeSwitcherIconLight = document.querySelector("[data-theme-icon-light]");
+const themeSwitcherIconDark = document.querySelector("[data-theme-icon-dark]");
 
 window.addEventListener("storage", (e) => {
     let theme = e.newValue;
@@ -22,6 +24,7 @@ if (localStorage.getItem("prefferedTheme")) {
 function setPrefferedTheme(prefTheme) {
     document.documentElement.className = "";
     document.documentElement.className = prefTheme;
+    updateShowingIcon(prefTheme);
 }
 
 function toggleTheme() {
@@ -36,6 +39,18 @@ function updateStorage(theme) {
 
 function getPreferedTheme() {
     return localStorage.getItem("prefferedTheme") === "light-theme" ? "light-theme" : "dark-theme";
+}
+
+function updateShowingIcon(theme) {
+    if (theme === "light-theme") {
+        themeSwitcherIconDark.classList.remove("hide")
+        themeSwitcherIconLight.classList.remove("hide")
+        themeSwitcherIconLight.classList.add("hide")
+    } else {
+        themeSwitcherIconDark.classList.remove("hide")
+        themeSwitcherIconLight.classList.remove("hide")
+        themeSwitcherIconDark.classList.add("hide")
+    }
 }
 
 // game logic 

@@ -88,16 +88,13 @@ body {
     fill: var(--background-color);
 }
 
-.theme-switcher-btn__icon-light path,
-.theme-switcher-btn__icon-dark path {
+.theme-switcher-btn__icon path {
     fill: var(--mark-color);
 }
 
-.theme-switcher-btn__icon-light {
+.theme-switcher-btn__icon.hide {
     display: none;
 }
-
-.theme-switcher-btn__icon-dark {}
 
 .game-header>h1 {
     margin: 0;
