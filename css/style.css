@@ -13,6 +13,9 @@
 :root {
     --cell-size: 100px;
     --mark-sze: calc(var(--cell-size) * .9);
+}
+
+:root.light-theme {
     --background-color: white;
     --mark-color: black;
     --mark-hover-color: lightgray;
@@ -159,7 +162,6 @@ body {
 .cell.x,
 .cell.circle {
     cursor: not-allowed;
-    /* pointer-events: none; */
 }
 
 .cell.x::before,
@@ -216,7 +218,6 @@ body {
 }
 
 .game-footer_link {
-    /* text-decoration */
     text-underline-offset: .25em;
     color: inherit;
 }
@@ -271,7 +272,8 @@ body {
     }
 }
 
-@media (orientation: landscape) and (max-width: 800px) {
+
+@media (orientation: landscape) and (max-height: 800px) {
     .landscape-orientation-message-container {
         display: flex;
         justify-content: center;
